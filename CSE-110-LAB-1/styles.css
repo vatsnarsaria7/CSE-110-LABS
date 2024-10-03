@@ -5,6 +5,11 @@
 
 #Section2 {
   background-image: url("https://www.ucsd.edu/_resources/img/bg-orbs-1.jpg");
+  color: white;
+}
+
+img {
+  max-width: 100%;
 }
 
 #logo {
@@ -53,4 +58,23 @@
 .box4 {
   background-color: #182b49;
   color: white;
+}
+
+@media screen and (max-width: 800px) {
+  a {
+    display: none;
+  }
+  #UCSDlogo {
+    max-width: 75%;
+  }
+  h3 {
+    font-size: 24px;
+  }
+  p {
+    font-size: 20px;
+  }
+
+  .wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
