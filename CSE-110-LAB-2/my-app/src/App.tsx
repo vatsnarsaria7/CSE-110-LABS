@@ -24,6 +24,7 @@ function App() {
         {dummyNotesList.map((note) => (
           <div key={note.id} className="note-item">
             <div className="notes-header">
+              <button>heart</button>
               <button>x</button>
             </div>
             <h2> {note.title} </h2>

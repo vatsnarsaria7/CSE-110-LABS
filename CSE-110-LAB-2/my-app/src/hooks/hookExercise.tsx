@@ -4,10 +4,11 @@ import { ThemeContext, themes } from "./ThemeContext";
 function ClickCounter() {
   const [count, setCount] = useState(0);
 
-  const handleClick = () => {
-    setCount(count + 1);
-    console.log("Count:", count);
-  };
+  // const handleClick = () => {
+  //   setCount(count + 1);
+  //   console.log("Count:", count);
+  // };
+
   const theme = useContext(ThemeContext);
 
   return (
