@@ -28,6 +28,11 @@ function App() {
     setCreateNote(initialNote);
   };
 
+  const deleteHandles = (id: number) => {
+    const remainingNotes = notes.filter((note) => note.id != id);
+    setNotes(remainingNotes);
+  };
+
   const theme = useContext(ThemeContext);
   const [favoriteNotes, setFavoriteNotes] = useState<Note[]>([]);
   const [currentTheme, setCurrentTheme] = useState(themes.light);
@@ -124,11 +129,13 @@ function App() {
                 <button onClick={() => manageFav(note.id)}>
                   {note.isFavorite ? "❤️" : "♡"}
                 </button>
-                <button>x</button>
+                <button onClick={() => deleteHandles(note.id)}>X</button>
               </div>
-              <h2> {note.title} </h2>
-              <p> {note.content} </p>
-              <p> {note.label} </p>
+              <div>
+                <h2 contentEditable={true}> {note.title} </h2>
+                <p contentEditable={true}> {note.content} </p>
+                <p contentEditable={true}> {note.label} </p>
+              </div>
             </div>
           ))}
         </div>
