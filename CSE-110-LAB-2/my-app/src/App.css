@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: black;
+  color: white;
 }
 
 .App-logo {
@@ -39,17 +41,17 @@
 
 .note-individual {
   border: 1px solid black;
-  display: "flex";
+  display: flex;
   flex-direction: columns;
 }
 
 .app-container {
-  display: "flex";
+  display: flex;
   flex-direction: column;
 }
 
 .note-form {
-  display: "flex";
+  display: flex;
   border: 1px solid black;
   flex-direction: column;
 }
