@@ -8,6 +8,26 @@ import { ThemeContext, themes } from "./hooks/ThemeContext";
 
 function App() {
   const [notes, setNotes] = useState(dummyNotesList);
+
+  const initialNote = {
+    id: -1,
+    title: "",
+    content: "",
+    label: Label.other,
+    isFavorite: false,
+  };
+
+  const [createNote, setCreateNote] = useState(initialNote);
+
+  const createNotHandler = (event: React.FormEvent) => {
+    event.preventDefault();
+    console.log("title: ", createNote.title);
+    console.log("content: ", createNote.content);
+    createNote.id = notes.length + 1;
+    setNotes([createNote, ...notes]);
+    setCreateNote(initialNote);
+  };
+
   const theme = useContext(ThemeContext);
   const [favoriteNotes, setFavoriteNotes] = useState<Note[]>([]);
   const [currentTheme, setCurrentTheme] = useState(themes.light);
@@ -39,19 +59,43 @@ function App() {
           color: currentTheme.foreground,
         }}
       >
-        <form className="noteForm">
+        <form className="noteForm" onSubmit={createNotHandler}>
           <div>
-            <input placeholder="Note Title"></input>
+            <input
+              placeholder="Note Title"
+              value={createNote.title}
+              onChange={(event) =>
+                setCreateNote({ ...createNote, title: event.target.value })
+              }
+              required
+            ></input>
           </div>
           <div>
-            <textarea></textarea>
+            <textarea
+              value={createNote.content}
+              onChange={(event) =>
+                setCreateNote({ ...createNote, content: event.target.value })
+              }
+              required
+            ></textarea>
           </div>
-          <select>
-            <option>personal</option>
-            <option>work</option>
-            <option>study</option>
-            <option>other</option>
-          </select>
+          <div>
+            <select
+              value={createNote.label}
+              onChange={(event) =>
+                setCreateNote({
+                  ...createNote,
+                  label: event.target.value as Label,
+                })
+              }
+              required
+            >
+              <option value={Label.personal}>Personal</option>
+              <option value={Label.study}>Study</option>
+              <option value={Label.work}>Work</option>
+              <option value={Label.other}>Other</option>
+            </select>
+          </div>
           <div>
             <button type="submit">Create Note</button>
           </div>
