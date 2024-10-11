@@ -64,7 +64,7 @@ function App() {
           color: currentTheme.foreground,
         }}
       >
-        <form className="noteForm" onSubmit={createNotHandler}>
+        <form className="note-form" onSubmit={createNotHandler}>
           <div>
             <input
               placeholder="Note Title"
